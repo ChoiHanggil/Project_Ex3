@@ -8,28 +8,34 @@
 std::vector<int> ProductExceptSelf(const std::vector<int>& nums)
 {	
 	int multiply_sum{1};
+	int zeroCount{};
 	for (auto num : nums)
 	{
 		if (num != 0)
 		{
 			multiply_sum *= num;
 		}
+		else
+		{
+			zeroCount++;
+		}
 	}
 
 	std::vector<int> answer;
-	auto temp = std::find(nums.begin(), nums.end(), 0);
+	//auto temp = std::find(nums.begin(), nums.end(), 0);
+
 
 	for (auto num : nums)
 	{
-		if (temp != nums.end() )
+		if (zeroCount != 0 )
 		{
-			if (num != 0)
+			if (num == 0 && zeroCount == 1)
 			{
-				answer.push_back(0);
+				answer.push_back(multiply_sum);
 			}
 			else
 			{
-				answer.push_back(multiply_sum);
+				answer.push_back(0);
 			}
 		}
 		else
