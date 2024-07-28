@@ -3,6 +3,7 @@
 #include<queue>
 #include<map>
 #include<algorithm>
+#include <string>
 //1. O(n)
 std::vector<int> ProductExceptSelf(const std::vector<int>& nums)
 {	
@@ -120,6 +121,81 @@ int GetMinMaxAggroCount(const std::vector<int> times, const std::vector<int> act
 
 	return answer;
 }
+//4.
+// O(n)
+int PossibleWaysToClimb(int n)
+{
+	if (n == 1)
+	{
+		return 1;
+	}
+	if (n == 2)
+	{
+		return 2;
+	}
+	int answer{ 1 };
+	int previous{ 1 };
+	int temp{};
+
+	for (int i = 2; i < n; i++)
+	{
+		temp = answer;
+		answer += previous;
+		previous = temp;
+	}
+}
+
+
+//5.
+//O(n)
+int NumberOFDecodings(std::string s)
+{
+	if (s[0] == '0')
+	{
+		return 0;
+	}
+	if (s.size() == 1)
+	{
+		return 1;
+	}
+
+	int num{};
+	int answer{1};
+	int previous{ 1 };
+	int temp{};
+
+	for (auto i = 0; i < s.size()-1; i++)
+	{
+		num = (s[i] - 48) * 10 + s[i+1]- 48;
+		if (num <= 26)
+		{
+			if (s[i+1] != '0')
+			{
+				temp = answer;
+				answer += previous;
+				previous = temp;
+			}
+			else
+			{
+				answer = previous;
+				previous = 0;
+			}
+		}
+		else
+		{
+			if (s[i+1] != '0')
+			{
+				previous = answer;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+	}
+
+	return answer;
+}
 
 int main()
 {
@@ -130,5 +206,10 @@ int main()
 
 	//std::cout << GetMinMaxAggroCount({ 1,4,5,10,11 }, { 4,-2,-5,4,1 }, 10);
 
+	std::cout << PossibleWaysToClimb(2);
+
+
+	//std::string s{ "110" };
+	//std::cout << NumberOFDecodings(s);
 
 }
