@@ -22,8 +22,6 @@ std::vector<int> ProductExceptSelf(const std::vector<int>& nums)
 	}
 
 	std::vector<int> answer;
-	//auto temp = std::find(nums.begin(), nums.end(), 0);
-
 
 	for (auto num : nums)
 	{
@@ -94,6 +92,7 @@ bool IsSameBT(TreeNode* p, TreeNode* q)
 	}
 	return true;
 }
+
 //3.
 //O(n)
 int GetMinMaxAggroCount(const std::vector<int> times, const std::vector<int> actions, int maxAggro)
@@ -199,23 +198,26 @@ int NumberOFDecodings(std::string s)
 			}
 		}
 	}
-
 	return answer;
 }
 
 int main()
 {
-	/*for (auto e : ProductExceptSelf({ -1,1,0,3,-3 }))
-	{
-		std::cout << e << ", ";
-	}*/
+	//for (auto e : ProductExceptSelf({ -1,1,0,3,-3 }))
+	//{
+	//	std::cout << e << ", ";
+	//}
 
 	//std::cout << GetMinMaxAggroCount({ 1,4,5,10,11 }, { 4,-2,-5,4,1 }, 10);
 
-	std::cout << PossibleWaysToClimb(2);
+	//std::cout << PossibleWaysToClimb(2);
 
 
 	//std::string s{ "110" };
 	//std::cout << NumberOFDecodings(s);
+
+	std::vector<int>a;
+
+	std::cout << sizeof(a);
 
 }
